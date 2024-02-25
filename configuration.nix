@@ -12,7 +12,7 @@
       # General security improvements.
         ./security/security.nix
       # Hardening systemd services
- 	./security/systemd-hardening.nix 
+# 	./security/systemd-hardening.nix 
       # Apparmor Profiles
 	./security/apparmor.nix
       # Enable the home manager. 

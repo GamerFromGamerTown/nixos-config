@@ -268,16 +268,10 @@ systemd = {
     serviceConfig.Type = "oneshot";
   };
 
-  # Create a systemd timer to run the service every hour
   systemd.timers.nixsaveTimer = {
     wantedBy = [ "timers.target" ];
     timerConfig.OnCalendar = "*:0/60"; # Every hour
   };
-
-  # Ensure git is available for the script (if not already globally available)
-  environment.systemPackages = with pkgs; [
-    git
-  ];
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

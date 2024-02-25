@@ -256,6 +256,29 @@ systemd = {
   };
 };
 
+
+# Backup the config if changed every hour.
+ systemd.services.nixsave = {
+    description = "Commit NixOS Configuration Changes";
+    script = "${pkgs.writeShellScriptBin "nixsave" ''
+      # Your command here; ensure it works under the root environment
+      ${pkgs.git}/bin/git -C /etc/nixos add .
+      ${pkgs.git}/bin/git -C /etc/nixos commit -m "Automatic update from systemd"
+    ''}/bin/nixsave";
+    serviceConfig.Type = "oneshot";
+  };
+
+  # Create a systemd timer to run the service every hour
+  systemd.timers.nixsaveTimer = {
+    wantedBy = [ "timers.target" ];
+    timerConfig.OnCalendar = "*:0/60"; # Every hour
+  };
+
+  # Ensure git is available for the script (if not already globally available)
+  environment.systemPackages = with pkgs; [
+    git
+  ];
+
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?

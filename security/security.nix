@@ -14,6 +14,9 @@ security = {
   sudo = {
     wheelNeedsPassword = true;
     execWheelOnly = true;
+    extraConfig = ''
+    alice ALL=(ALL:ALL) NOPASSWD: /run/current-system/sw/bin/git
+  '';
   };
 };
 

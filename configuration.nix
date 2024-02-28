@@ -48,6 +48,7 @@ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
   services = {
     blueman.enable = true;
     fstrim.enable = true;
+    tailscale.enable = true;
   };
   
 

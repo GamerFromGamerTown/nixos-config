@@ -11,15 +11,14 @@ security = {
   polkit.enable = true;
   protectKernelImage = true;
   allowUserNamespaces = true;
-  sudo = {
-    wheelNeedsPassword = true;
-    execWheelOnly = true;
-    extraConfig = ''
-    alice ALL=(ALL:ALL) NOPASSWD: /run/current-system/sw/bin/git
-  '';
-  };
+  sudo.enable = false;
+  doas.enable = true;
+  doas.extraRules = [{
+    users = [ "alice" ];
+    keepEnv = true;
+    persist = true;  
+  }];
 };
-
 
   networking.firewall = {
     enable = true; # Enable the firewall

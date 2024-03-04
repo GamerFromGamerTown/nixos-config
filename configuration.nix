@@ -190,7 +190,7 @@ xdg.portal = {
     description = "alice";
     extraGroups = [ "networkmanager" "wheel" "audio" "libvirtd"];
     shell = pkgs.zsh;
-    packages = with pkgs; [ armcord bleachbit bottom bluez bluez-tools brave fastfetch featherpad firefox foot git gimp home-manager hyprpicker intelmetool krita libreoffice-still lynx mullvad mullvad-vpn mpv networkmanagerapplet neovim oh-my-zsh pcmanfm signal-desktop sl swaylock timeshift tor tor-browser vscodium virt-manager];
+    packages = with pkgs; [ armcord bleachbit bottom bluez bluez-tools brave fastfetch featherpad firefox foot git gimp home-manager hyprpicker intelmetool krita libreoffice-still lynx mullvad mullvad-vpn mpv networkmanagerapplet neovim oh-my-zsh pcmanfm signal-desktop starship sl swaylock timeshift tor tor-browser vscodium virt-manager];
   };
 
     users.steam = {

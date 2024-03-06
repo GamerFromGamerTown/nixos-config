@@ -149,7 +149,7 @@ hardware.cpu.intel.updateMicrocode = true;
 
 # system package management
 environment.systemPackages = with pkgs; [
-auto-cpufreq bc binutils bison brightnessctl btop bubblewrap busybox catppuccin catppuccin-cursors catppuccin-gtk catppuccin-kde catppuccin-papirus-folders clamav cmake flex gcc git gnome.cheese gnome.file-roller gnumake gsettings-desktop-schemas home-manager htop hyprpaper inconsolata plasma-desktop libglvnd libnotify libressl logrotate lynis nordic mesa mesa.drivers macchanger opensnitch opensnitch-ui pavucontrol pipewire pkg-config python3 qemu rsync sddm sddm-chili-theme swaylock tldr undervolt unzip virt-manager waybar wget wofi zsh
+apparmor-profiles auto-cpufreq bc binutils bison brightnessctl btop bubblewrap busybox catppuccin catppuccin-cursors catppuccin-gtk catppuccin-kde catppuccin-papirus-folders clamav cmake flex gcc git gnome.cheese gnome.file-roller gnumake gsettings-desktop-schemas home-manager htop hyprpaper inconsolata plasma-desktop libglvnd libnotify libressl logrotate lynis nordic mesa mesa.drivers macchanger opensnitch opensnitch-ui pavucontrol pipewire pkg-config python3 qemu rsync sddm sddm-chili-theme swaylock tldr undervolt unzip virt-manager waybar wget wofi zsh
 ];
 
 # theming
@@ -262,22 +262,6 @@ systemd = {
   };
 };
 
-
-# Backup the config if changed every hour.
- systemd.services.nixsave = {
-    description = "Commit NixOS Configuration Changes";
-    script = "${pkgs.writeShellScriptBin "nixsave" ''
-      # Your command here; ensure it works under the root environment
-      ${pkgs.git}/bin/git -C /etc/nixos add .
-      ${pkgs.git}/bin/git -C /etc/nixos commit -m "Automatic update from systemd"
-    ''}/bin/nixsave";
-    serviceConfig.Type = "oneshot";
-  };
-
-  systemd.timers.nixsaveTimer = {
-    wantedBy = [ "timers.target" ];
-    timerConfig.OnCalendar = "*:0/60"; # Every hour
-  };
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

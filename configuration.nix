@@ -149,7 +149,7 @@ hardware.cpu.intel.updateMicrocode = true;
 
 # system package management
 environment.systemPackages = with pkgs; [
-auto-cpufreq bc binutils bison brightnessctl btop bubblewrap busybox catppuccin catppuccin-cursors catppuccin-gtk catppuccin-kde catppuccin-papirus-folders clamav cmake flex gcc git gnome.file-roller gnumake gsettings-desktop-schemas home-manager htop hyprpaper inconsolata plasma-desktop libglvnd libnotify libressl logrotate lynis nordic mesa mesa.drivers macchanger opensnitch opensnitch-ui pavucontrol pipewire pkg-config python3 qemu rsync sddm sddm-chili-theme swaylock tldr undervolt unzip virt-manager waybar wget wofi zsh
+auto-cpufreq bc binutils bison brightnessctl btop bubblewrap busybox catppuccin catppuccin-cursors catppuccin-gtk catppuccin-kde catppuccin-papirus-folders clamav cmake flex gcc git gnome.cheese gnome.file-roller gnumake gsettings-desktop-schemas home-manager htop hyprpaper inconsolata plasma-desktop libglvnd libnotify libressl logrotate lynis nordic mesa mesa.drivers macchanger opensnitch opensnitch-ui pavucontrol pipewire pkg-config python3 qemu rsync sddm sddm-chili-theme swaylock tldr undervolt unzip virt-manager waybar wget wofi zsh
 ];
 
 # theming

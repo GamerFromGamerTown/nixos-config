@@ -10,7 +10,9 @@ security = {
   rtkit.enable = true;
   polkit.enable = true;
   protectKernelImage = true;
+  lockKernelModules = true;
   allowUserNamespaces = true;
+  forcePageTableIsolation = true;
   sudo.enable = false;
   doas.enable = true;
   doas.extraRules = [{
@@ -19,6 +21,16 @@ security = {
     persist = true;  
   }];
 };
+
+environment = {
+memoryAllocator.provider = "scudo";
+variables.SCUDO_OPTIONS = "ZeroContents=1";
+};
+  # This is required by podman to run containers in rootless mode.
+#  security.unprivilegedUsernsClone = mkDefault config.virtualisation.containers.enable;
+
+#  security.virtualisation.flushL1DataCache = mkDefault "always";
+
 
   networking.firewall = {
     enable = true; # Enable the firewall

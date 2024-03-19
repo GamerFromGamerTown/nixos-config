@@ -11,7 +11,7 @@
       # Use custom bootloader settings.
 	./bootloader-settings.nix 
       # General security improvements.
-        ./security/security.nix
+#        ./security/security.nix
       # Hardening systemd services
 # 	./security/systemd-hardening.nix 
       # Apparmor Profiles
@@ -28,12 +28,12 @@ nix.settings = {
  
 
 #nixpkgs config
-  nixpkgs.config.allowUnfree = false;
-nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-original"
-    "steam-run"
-  ];
+#  nixpkgs.config.allowUnfree = false;
+#nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+#    "steam"
+#    "steam-original"
+#    "steam-run"
+#  ];
 
 # networking !
 
@@ -68,7 +68,7 @@ programs.zsh = {
 
 
 
-  # Select internationalisation properties.
+  # Select internationaliz(s)ation properties.
 i18n = {
   defaultLocale = "en_US.UTF-8";
 

@@ -6,7 +6,7 @@ boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = [ "ntfs" ];
-    kernelPackages = pkgs.linuxPackages_6_6_hardened;
+    kernelPackages = pkgs.linuxPackages_6_7_hardened;
 #   extraModulePackages = with config.boot.kernelPackages; [ lkrg_hardened ]; # broken package
 	# hardening systemd-boot ∨
     kernelParams = [ 

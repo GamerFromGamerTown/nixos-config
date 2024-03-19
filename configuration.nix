@@ -89,6 +89,7 @@ i18n = {
 
 services.xserver = {
   enable = true;  # Enable the X server
+  desktopManager.gnome.enable = false;
   displayManager = {
     #lightdm.enable = true;  # Enable LightDM
     sddm = {

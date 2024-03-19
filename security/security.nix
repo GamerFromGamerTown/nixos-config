@@ -8,7 +8,9 @@ security = {
   chromiumSuidSandbox.enable = true;
   auditd.enable = true;
   rtkit.enable = true;
-  polkit.enable = true;
+  polkit = {
+   enable = true;
+  };
   protectKernelImage = true;
   lockKernelModules = true;
   allowUserNamespaces = true;
@@ -21,6 +23,7 @@ security = {
     persist = true;  
   }];
 };
+
 
 environment = {
 memoryAllocator.provider = "scudo";

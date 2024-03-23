@@ -40,7 +40,18 @@ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
   networking = {
     hostName = "nixy_wixy";
     wireguard.enable = true;
-  };
+    timeServers = [
+      "pool.ntp.org"
+      "0.nixos.pool.ntp.org"
+      "1.nixos.pool.ntp.org"
+      "2.nixos.pool.ntp.org"
+      "3.nixos.pool.ntp.org"
+   ];
+  tcpcrypt.enable = true;
+  stevenblack.enable = true;
+  stevenblack.block = [ "fakenews" "gambling" ];
+  enableIPv6 = false;
+};
   
   systemd.services.NetworkManager-wait-online.enable = true;
   hardware.bluetooth.enable = true; #enables support for Bluetooth
@@ -131,7 +142,7 @@ services = {
   };
 };
 
-# cpu tomfoolery
+# power management & cpu adjustments
 
 services = {
   undervolt = {
@@ -144,12 +155,42 @@ services = {
 };
 
 hardware.cpu.intel.updateMicrocode = true;
+#services.tlp = {
+#      enable = true;
+#      settings = {
+#        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+#        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+#
+#        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+#        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+#
+#        CPU_MIN_PERF_ON_AC = 0;
+#        CPU_MAX_PERF_ON_AC = 100;
+#        CPU_MIN_PERF_ON_BAT = 0;
+#        CPU_MAX_PERF_ON_BAT = 20;
+#
+#      };
+#};
 
-
+services.auto-cpufreq.settings = {
+  battery = {
+     governor = "powersave";
+     turbo = "never";
+  };
+  charger = {
+     governor = "performance";
+     turbo = "auto";
+  };
+};
 
 # system package management
 environment.systemPackages = with pkgs; [
-apparmor-profiles auto-cpufreq bc binutils bison brightnessctl btop bubblewrap busybox catppuccin catppuccin-cursors catppuccin-gtk catppuccin-kde catppuccin-papirus-folders clamav cmake flex gcc git gnome.cheese gnome.file-roller gnumake gsettings-desktop-schemas home-manager htop hyprpaper inconsolata kitty plasma-desktop playonlinux libglvnd libnotify libressl logrotate lynis nordic mesa mesa.drivers macchanger opensnitch opensnitch-ui pavucontrol pipewire pkg-config polkit polkit_gnome python3 qemu rsync sddm sddm-chili-theme swaylock tldr undervolt unzip wine wineWowPackages.full virt-manager waybar wget wofi zsh
+apparmor-profiles auto-cpufreq bc binutils bison brightnessctl btop bubblewrap busybox catppuccin catppuccin-cursors (catppuccin-gtk.override {
+    accents = [ "pink" ]; # You can specify multiple accents here to output multiple themes
+    size = "compact";
+    tweaks = [ "rimless" "black" ]; # You can also specify multiple tweaks here
+    variant = "macchiato";
+  })  catppuccin-kde catppuccin-papirus-folders clamav cmake flex gcc git gnome.cheese gnome.file-roller gnumake gsettings-desktop-schemas home-manager htop hyprpaper inconsolata kitty plasma-desktop playonlinux libglvnd libnotify libressl logrotate lynis nordic mesa mesa.drivers macchanger opensnitch opensnitch-ui pavucontrol pipewire pkg-config polkit polkit_gnome python3 qemu rsync sddm sddm-chili-theme swaylock tcpcrypt tldr undervolt unzip wine wineWowPackages.full virt-manager waybar wget wofi zsh
 ];
 
 # theming
@@ -159,12 +200,11 @@ nixpkgs.config.gtk = {
   iconTheme = "Nordic";
 };
 
-
 xdg.portal = {
    enable = true;
    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 };
-
+programs.dconf.enable = true;
 # audio
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -184,6 +224,7 @@ xdg.portal = {
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
   users = {
+    users.tcpcryptd.group = "wheel";
 
     users.alice = {
     isNormalUser = true;

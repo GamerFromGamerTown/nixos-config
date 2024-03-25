@@ -12,7 +12,7 @@ security = {
    enable = true;
   };
   protectKernelImage = true;
-  lockKernelModules = true;
+  lockKernelModules = false; # true is too much of a headache for me, but if you're willing to write down every module you'll use feel free
   allowUserNamespaces = true;
   forcePageTableIsolation = true;
   sudo.enable = false;
@@ -25,10 +25,10 @@ security = {
 };
 
 
-environment = {
-memoryAllocator.provider = "scudo";
-variables.SCUDO_OPTIONS = "ZeroContents=1";
-};
+#environment = {
+#memoryAllocator.provider = "scudo";
+#variables.SCUDO_OPTIONS = "ZeroContents=1";
+#};
   # This is required by podman to run containers in rootless mode.
 #  security.unprivilegedUsernsClone = mkDefault config.virtualisation.containers.enable;
 

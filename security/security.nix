@@ -54,11 +54,9 @@ services = {
       *.*  -/var/log/syslog
     '';
   journald.forwardToSyslog = true;
-  openssh.enable = false;
+  openssh.enable = true;
   dbus.apparmor = "enabled";
 };
-
-programs.ssh.package = pkgs.dropbear;
 
 virtualisation.libvirtd.enable = true;
 systemd.services.macchanger = {

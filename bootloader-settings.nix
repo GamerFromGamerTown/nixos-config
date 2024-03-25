@@ -5,7 +5,7 @@
 boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelModules = [ "acct" "kvm-intel" "usbhid" "hid_generic" ];  # Replace with the actual module names
+    kernelModules = [ "acct" "kvm-intel" "usbhid" "hid_generic" "e100e" "xhci_pci" "ehci_pci" "vfat" "ntfs" "btrfs" "iwlwifi" "bridge" "apparmor" "coretemp"];  # Replace with the actual module names
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_6_7_hardened;
 #   extraModulePackages = with config.boot.kernelPackages; [ lkrg_hardened ]; # broken package

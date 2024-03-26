@@ -285,6 +285,7 @@ hardware.opengl = {
 services = {
   gnome.gnome-settings-daemon.enable = true;
   logrotate.checkConfig = false;
+  tor.enable = true;
 }; 
 
 systemd = {

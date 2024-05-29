@@ -7,7 +7,7 @@ boot = {
     loader.efi.canTouchEfiVariables = true;
     kernelModules = [ "acct" "kvm-intel" "usbhid" "hid_generic" "e100e" "xhci_pci" "ehci_pci" "iwlwifi" "bridge" "apparmor" "coretemp" "ext4" "vfat" "ntfs" "btrfs" "xfs" "f2fs" "jfs" "exfat" "squashfs"];  
     supportedFilesystems = [ "ntfs" ];
-    kernelPackages = pkgs.linuxPackages_6_7_hardened;
+    #kernelPackages = pkgs.linuxKernel.kernels.linux_hardened;
 #   extraModulePackages = with config.boot.kernelPackages; [ lkrg_hardened ]; # broken package
 	# hardening systemd-boot ∨
     kernelParams = [ 

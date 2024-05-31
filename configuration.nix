@@ -5,20 +5,26 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-	./hardware-configuration.nix
-      # Use custom bootloader settings.
-	./bootloader-settings.nix 
-      # General security improvements.
-        ./security/security.nix
-      # Hardening systemd services
-# 	./security/systemd-hardening.nix 
-      # Apparmor Profiles
-#	./security/apparmor.nix
-      # Enable the home manager. 
-#	<home-manager/nixos>	
-    ];
+imports = 
+  [ 
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+
+    # Use custom bootloader settings.
+    ./bootloader-settings.nix 
+
+    # General security improvements.
+    ./security/security.nix
+
+    # Hardening systemd services (uncomment if needed)
+    # ./security/systemd-hardening.nix 
+
+    # Apparmor Profiles (uncomment if needed)
+    # ./security/apparmor.nix
+
+    # Enable the home manager. 
+#    <home-manager/nixos>
+  ];
 
 
 nix.settings = {
@@ -226,7 +232,7 @@ programs.dconf.enable = true;
   users = {
     users.tcpcryptd.group = "wheel";
 
-    users.alice = {
+  users.alice = {
     isNormalUser = true;
     description = "alice";
     extraGroups = [ "networkmanager" "wheel" "audio" "libvirtd"];
@@ -302,6 +308,13 @@ systemd = {
       };
   };
 };
+
+# Home Manager
+#  home-manager = {
+#    useGlobalPkgs = true;
+#    useUserPackages = true;
+#    users.alice = import /home/alice/.config/nixpkgs/home.nix;
+#};
 
 
   # Before changing this value read the documentation for this option

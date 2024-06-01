@@ -196,7 +196,7 @@ apparmor-profiles auto-cpufreq bc binutils bison brightnessctl btop bubblewrap b
     size = "compact";
     tweaks = [ "rimless" "black" ]; # You can also specify multiple tweaks here
     variant = "macchiato";
-  })  catppuccin-kde catppuccin-papirus-folders clamav cmake flex gcc git gnome.cheese gnome.file-roller gnumake gsettings-desktop-schemas home-manager htop hyprpaper inconsolata kitty plasma-desktop playonlinux libglvnd libnotify libressl logrotate lynis nordic mesa mesa.drivers macchanger opensnitch opensnitch-ui pavucontrol pipewire pkg-config polkit polkit_gnome python3 qemu rsync sddm sddm-chili-theme shattered-pixel-dungeon swaybg swaylock tcpcrypt thunderbird tldr undervolt unzip wine wineWowPackages.full virt-manager waybar wget wofi zsh
+  })  catppuccin-kde catppuccin-papirus-folders clamav cmake dash flex gcc git gnome.cheese gnome.file-roller gnumake gsettings-desktop-schemas home-manager htop hyprpaper inconsolata kitty plasma-desktop playonlinux libglvnd libnotify libressl logrotate lynis nordic mesa mesa.drivers macchanger opensnitch opensnitch-ui pavucontrol pipewire pkg-config polkit polkit_gnome python3 qemu rsync sddm sddm-chili-theme shattered-pixel-dungeon swaybg swaylock tcpcrypt thunderbird tldr undervolt unzip wine wineWowPackages.full virt-manager waybar wget wofi zsh
 ];
 
 # theming

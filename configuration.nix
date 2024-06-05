@@ -154,8 +154,8 @@ services = {
 services = {
   undervolt = {
     enable = true;
-    coreOffset = -60; #formerly -80
-    gpuOffset = -35; # formerly -50
+    coreOffset = -50; #formerly -80
+    gpuOffset = -30; # formerly -50
   };
   auto-cpufreq.enable = true;
   thermald.enable = true;
@@ -309,6 +309,7 @@ systemd = {
       };
   };
 };
+
 
 # Home Manager
 #  home-manager = {

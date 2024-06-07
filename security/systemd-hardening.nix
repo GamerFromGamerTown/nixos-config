@@ -65,29 +65,29 @@ serviceConfig = {
 };
 
 
-systemd.services.bluetooth = {
-  serviceConfig = {
+#systemd.services.bluetooth = {
+#  serviceConfig = {
   #RestrictRealtime= true;
-  NoNewPrivileges= true;
-  AmbientCapabilities= false;
-  PrivateDevices= false;
+#  NoNewPrivileges= true;
+#  AmbientCapabilities= false;
+#  PrivateDevices= false;
   #ProtectClock = true;
-  ProtectKernelLogs = true;
-  ProtectKernelModules = true;
-  SystemCallArchitectures = "native";
+#  ProtectKernelLogs = true;
+#  ProtectKernelModules = true;
+#  SystemCallArchitectures = "native";
   #RestrictSUIDSGID= true;
   #ProtectHostname= true;
-  LockPersonality= true;
+#  LockPersonality= true;
   #RestrictAddressFamilies= [ "AF_PACKET"]; #and this
-  DeviceAllow= false;
+#  DeviceAllow= false;
   #ProtectProc= false;
-  ProcSubset= true;
-  PrivateUsers= true;
-  SystemCallFilter= ["~@cpu-emulation" "~@debug" "~@module" "~@mount" "~@obsolete" "~@raw-io" "~@reboot" "~@resources" "~@swap" ];
+#  ProcSubset= true;
+#  PrivateUsers= true;
+#  SystemCallFilter= ["~@cpu-emulation" "~@debug" "~@module" "~@mount" "~@obsolete" "~@raw-io" "~@reboot" "~@resources" "~@swap" ];
   #IPAddressDeny= true;
   #UMask = "0077";  
-  };
-};
+#  };
+#};
 
 systemd.services.systemd-journald = {
   serviceConfig = {

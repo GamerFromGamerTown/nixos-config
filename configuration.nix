@@ -17,7 +17,7 @@ imports =
     ./security/security.nix
 
     # Hardening systemd services (uncomment if needed)
-    ./security/systemd-hardening.nix 
+    #./security/systemd-hardening.nix 
 
     # Apparmor Profiles (uncomment if needed)
     # ./security/apparmor.nix

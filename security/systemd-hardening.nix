@@ -402,8 +402,8 @@ systemd.services.NetworkManager = {
 #   };
 #  };
 
-#systemd.services."dbus" = {
-#    serviceConfig = {
+systemd.services."dbus" = {
+    serviceConfig = {
       # Restrict the service to its own private /tmp and /var/tmp directories
       ##PrivateTmp = true;
       # Give the service its own private network namespace
@@ -411,7 +411,7 @@ systemd.services.NetworkManager = {
       # Set up a read-only file system, with specific exceptions
       #ProtectSystem = "full";
       # Make the home directories inaccessible to the service
-      ##ProtectHome = true;
+      ProtectHome = true;
       # Restrict the set of system calls the service can use
       ##SystemCallFilter = "~@clock @cpu-emulation @module @mount @obsolete @raw-io @swap";
       # Drop unnecessary capabilities
@@ -430,8 +430,8 @@ systemd.services.NetworkManager = {
       ##LockPersonality= true;
       #RestrictRealtime= true;
       ##PrivateUsers= true;
-#    };
-#  };
+    };
+  };
 
 #systemd.services.nix-daemon = {
 #  serviceConfig = {
